@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +34,7 @@ export default function Navbar() {
         <div className="container mx-auto px-6 h-20 flex justify-between items-center">
           {/* Logo - Corporate Bold */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-zinc-900 flex items-center justify-center text-white font-bold text-xl rounded-sm">JM</div>
+            <Image src="/images/logo.jpg" alt="Joenald Metal Logo" width={40} height={40} className="rounded-sm" />
             <div className="flex flex-col justify-center">
               <span className="text-xl font-bold text-zinc-900 leading-none tracking-tight">JOENALD</span>
               <span className="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">Metal Engineering</span>
