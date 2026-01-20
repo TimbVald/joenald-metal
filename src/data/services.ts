@@ -6,6 +6,7 @@ export interface Service {
   features: string[];
   benefits: string[];
   image: string; // Path to the image in public/images
+  category: string; // New field for categorization
 }
 
 export const services: Service[] = [
@@ -27,6 +28,7 @@ export const services: Service[] = [
       'Cost-effective construction',
     ],
     image: '/images/metal-structures.jpg',
+    category: 'Construction',
   },
   {
     id: 'art-metalwork',
@@ -46,6 +48,7 @@ export const services: Service[] = [
       'Enhances property value and appeal',
     ],
     image: '/images/art-metalwork.jpg',
+    category: 'Artistic',
   },
   {
     id: 'security-fencing',
@@ -65,6 +68,7 @@ export const services: Service[] = [
       'Long-term durability with minimal maintenance',
     ],
     image: '/images/security-fencing.jpg',
+    category: 'Security',
   },
   {
     id: 'industrial-furniture',
@@ -84,6 +88,7 @@ export const services: Service[] = [
       'Adds a modern, industrial touch to interiors',
     ],
     image: '/images/industrial-furniture.jpg',
+    category: 'Furniture',
   },
   {
     id: 'welding-repair',
@@ -103,6 +108,7 @@ export const services: Service[] = [
       'Cost-effective alternative to replacement',
     ],
     image: '/images/welding-repair.jpg',
+    category: 'Maintenance',
   },
   {
     id: 'cutting-bending',
@@ -122,5 +128,6 @@ export const services: Service[] = [
       'Efficient production for large and small batches',
     ],
     image: '/images/cutting-bending.jpg',
+    category: 'Fabrication',
   },
 ];
