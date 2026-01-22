@@ -3,11 +3,15 @@ import "./globals.css";
 import Link from "next/link";
 
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 
 export const metadata: Metadata = {
   title: "JOENALD METAL | Art Metalwork & Design",
   description: "Custom metal creations, contemporary design, and artisanal craftsmanship.",
+  icons: {
+    icon: "/images/logo.jpg",
+  },
 };
 
 export default function RootLayout({
@@ -22,6 +26,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

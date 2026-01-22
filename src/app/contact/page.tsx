@@ -32,6 +32,20 @@ export default function Contact() {
           </p>
         </div>
 
+        {/* Google Map */}
+        <div className="w-full max-w-lg bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mb-8">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.47705074313!2d18.6105812!3d-33.9031197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5a7c0e63a3c1%3A0x788147f7c865d549!2s33%20Binders%20Rd%2C%20Parow%20East%2C%20Cape%20Town%2C%207501%2C%20Afrique%20du%20Sud!5e0!3m2!1sfr!2scm!4v1769056272362!5m2!1sfr!2scm"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Joenald Metal Location"
+          ></iframe>
+        </div>
+
         <form className="w-full max-w-lg bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
           <div className="mb-4 text-left">
             <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">

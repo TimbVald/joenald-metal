@@ -43,15 +43,34 @@ export default function Navbar() {
 
           {/* Desktop Menu - Structured */}
           <div className="hidden md:flex items-center space-x-8 font-medium text-sm text-zinc-600">
-            {["Home", "About", "Our Services", "Projects", "Contact"].map((item) => (
-              <Link
-                key={item}
-                href={item === "Home" ? "/" : `#${item.toLowerCase().replace(/ /g, "-").normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
-                className="hover:text-zinc-900 py-2 border-b-2 border-transparent hover:border-zinc-900 transition-all uppercase text-xs tracking-wide"
-              >
-                {item}
-              </Link>
-            ))}
+            {["Home", "About", "Services", "Contact"].map((item) => {
+              let href = "";
+              switch (item) {
+                case "Home":
+                  href = "/";
+                  break;
+                case "About":
+                  href = "/about";
+                  break;
+                case "Services":
+                  href = "/projects";
+                  break;
+                case "Contact":
+                  href = "/contact";
+                  break;
+                default:
+                  href = "#";
+              }
+              return (
+                <Link
+                  key={item}
+                  href={href}
+                  className="hover:text-zinc-900 py-2 border-b-2 border-transparent hover:border-zinc-900 transition-all uppercase text-xs tracking-wide"
+                >
+                  {item}
+                </Link>
+              );
+            })}
           </div>
 
           {/* CTA Button */}
@@ -75,18 +94,37 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden bg-white border-t border-zinc-100 py-4 absolute w-full shadow-xl z-50">
             <div className="container mx-auto px-6 flex flex-col space-y-2">
-              {["Home", "About", "Our Services", "Projects", "Contact"].map((item) => (
-                <Link
-                  key={item}
-                  href={item === "Home" ? "/" : `#${item.toLowerCase().replace(/ /g, "-").normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
-                  className="text-zinc-700 font-medium py-3 border-b border-zinc-50 hover:bg-zinc-50 px-2"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item}
-                </Link>
-              ))}
+              {["Home", "About", "Services", "Contact"].map((item) => {
+                let href = "";
+                switch (item) {
+                  case "Home":
+                    href = "/";
+                    break;
+                  case "About":
+                    href = "/about";
+                    break;
+                  case "Services":
+                    href = "/projects";
+                    break;
+                  case "Contact":
+                    href = "/contact";
+                    break;
+                  default:
+                    href = "#";
+                }
+                return (
+                  <Link
+                    key={item}
+                    href={href}
+                    className="text-zinc-700 font-medium py-3 border-b border-zinc-50 hover:bg-zinc-50 px-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item}
+                  </Link>
+                );
+              })}
               <div className="pt-4">
-                <Link href="#contact" onClick={() => setIsOpen(false)} className="block w-full bg-zinc-900 text-white text-center py-3 font-bold uppercase text-sm rounded-sm">
+                <Link href="/contact" onClick={() => setIsOpen(false)} className="block w-full bg-zinc-900 text-white text-center py-3 font-bold uppercase text-sm rounded-sm">
                   Request a Quote
                 </Link>
               </div>
