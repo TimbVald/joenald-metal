@@ -10,7 +10,7 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-semibold text-white mb-4">Joenald Metal Engineering</h3>
           <p className="text-zinc-400 text-sm">
-            Votre partenaire de confiance pour l'ingénierie et la fabrication métallique.
+            Your trusted partner for metal engineering and fabrication.
           </p>
         </div>
 
@@ -20,12 +20,12 @@ export default function Footer() {
           <ul className="space-y-2">
             <li>
               <a href="#services" className="text-zinc-400 hover:text-yellow-500 transition-colors duration-300">
-                Conception & Ingénierie
+                Design & Engineering
               </a>
             </li>
             <li>
               <a href="#services" className="text-zinc-400 hover:text-yellow-500 transition-colors duration-300">
-                Fabrication Métallique
+                Metal Fabrication
               </a>
             </li>
             <li>

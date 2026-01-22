@@ -5,7 +5,7 @@ import ServiceCard from "@/components/ServiceCard";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 text-zinc-800">
+    <div className="flex min-h-screen flex-col bg-white text-zinc-800">
 
       {/* Corporate Hero - Structured & Informative */}
       <section className="relative h-150 w-full bg-zinc-900">

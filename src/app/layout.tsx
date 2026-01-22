@@ -22,8 +22,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className="antialiased bg-zinc-50 text-zinc-900 font-sans"
-      >
+          className="antialiased bg-white text-zinc-900 font-sans"
+        >
         <Navbar />
         {children}
         <Footer />
