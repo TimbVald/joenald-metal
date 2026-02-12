@@ -45,15 +45,15 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-semibold text-white mb-4">Contact</h3>
           <p className="text-zinc-400 text-sm">
-            Adresse: 123 Rue de l'Acier, Zone Industrielle, 75000 Paris, France
+            Address: 123 Steel Street, Industrial Zone, 75000 Paris, France
           </p>
-          <p className="text-zinc-400 text-sm mt-2">Téléphone: +33 1 23 45 67 89</p>
+          <p className="text-zinc-400 text-sm mt-2">Phone: +33 1 23 45 67 89</p>
           <p className="text-zinc-400 text-sm mt-2">Email: contact@joenaldmetal.fr</p>
         </div>
 
         {/* Column 4 */}
         <div>
-          <h3 className="text-xl font-semibold text-white mb-4">Suivez-nous</h3>
+          <h3 className="text-xl font-semibold text-white mb-4">Follow Us</h3>
           <div className="flex space-x-4">
             <a href="#" className="text-zinc-400 hover:text-yellow-500 transition-colors duration-300">
               Facebook
