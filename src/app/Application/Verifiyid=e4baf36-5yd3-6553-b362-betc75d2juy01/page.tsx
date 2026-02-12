@@ -2,16 +2,16 @@ import React from 'react';
 
 export default function CertificateVerificationPage() {
   const certificateData = [
-    { label: 'Surname', value: 'DOH BECKLY' },
-    { label: 'First Name', value: 'GABILA' },
-    { label: 'Identification Number', value: 'AA619885' },
-    { label: 'Date of Birth', value: '1985/07/20' },
+    { label: 'Surname', value: 'ULRICH JOEL' },
+    { label: 'First Name', value: 'FAMENI' },
+    { label: 'Identification Number', value: 'CTRCMR000020410' },
+    { label: 'Date of Birth', value: '1992/05/20' },
     { label: 'Trade', value: 'Welder' },
     { label: 'OFO Code', value: '651202' },
     { label: 'OFO Description', value: 'WELDER' },
     { label: 'Certificate Number', value: '12/245714' },
-    { label: 'Date Tested', value: '2024/04/09' },
-    { label: 'Date Certificate', value: '2025/09/01' },
+    { label: 'Date Tested', value: '2026/06/09' },
+    { label: 'Date Certificate', value: '2026/11/23' },
     { label: 'Section Of the Act', value: 'SECTION 26' },
   ];
 
