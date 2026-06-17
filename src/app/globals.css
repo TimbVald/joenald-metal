@@ -1,6 +1,9 @@
 /* @import './styles/satoshi.css'; */
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
+
 @font-face {
   font-family: 'Satoshi';
   src: url('/fonts/Satoshi-Bold.woff2') format('woff2'),
@@ -62,6 +65,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Utilitaires d'effet métallique */

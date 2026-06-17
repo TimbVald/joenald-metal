@@ -50,29 +50,29 @@ export default function Projects() {
   }, [filteredServices, sortOption]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-950 text-zinc-100 font-sans">
+    <div className="flex min-h-screen flex-col bg-white dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 font-sans transition-colors duration-300">
       
       {/* En-tête immersif */}
-      <section className="relative py-24 bg-zinc-900 border-b border-zinc-800/80">
+      <section className="relative py-24 bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800/80 transition-colors duration-300">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1535813547-99c456a41d4a?q=80&w=2670&auto=format&fit=crop"
             alt="Profils en acier"
             fill
-            className="object-cover opacity-10"
+            className="object-cover opacity-5 dark:opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-zinc-950 via-transparent to-transparent"></div>
         </div>
         
         <div className="relative z-10 container mx-auto px-6 text-center max-w-3xl">
-          <span className="text-yellow-500 font-extrabold text-xs uppercase tracking-widest bg-yellow-500/10 px-4 py-1 rounded-full">
+          <span className="text-yellow-600 dark:text-yellow-500 font-extrabold text-xs uppercase tracking-widest bg-yellow-500/10 px-4 py-1 rounded-full">
             Nos Prestations
           </span>
-          <h1 className="text-4xl md:text-6xl font-black text-white mt-4 tracking-tight uppercase">
+          <h1 className="text-4xl md:text-6xl font-black text-zinc-900 dark:text-white mt-4 tracking-tight uppercase">
             Services & Réalisations
           </h1>
           <div className="w-16 h-1 bg-yellow-500 mx-auto mt-6 rounded-full"></div>
-          <p className="text-zinc-400 text-base md:text-lg mt-6 leading-relaxed">
+          <p className="text-zinc-650 dark:text-zinc-400 text-base md:text-lg mt-6 leading-relaxed">
             Parcourez notre gamme complète de services d&apos;ingénierie métallique. Chaque projet bénéficie de notre précision technique et de notre engagement qualité.
           </p>
         </div>
@@ -81,7 +81,7 @@ export default function Projects() {
       {/* Contenu principal */}
       <main className="container mx-auto px-6 py-20 flex-grow max-w-6xl">
         {/* Filtres et tris */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12 bg-zinc-900 border border-zinc-800 p-6 rounded-lg">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 rounded-lg transition-colors duration-300">
           
           {/* Boutons de catégories */}
           <div className="flex flex-wrap gap-2.5 justify-center md:justify-start">
@@ -94,7 +94,7 @@ export default function Projects() {
                   className={`px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all duration-300 border ${
                     selectedCategory === category
                       ? 'bg-yellow-500 text-zinc-950 border-yellow-500 shadow-md shadow-yellow-500/10'
-                      : 'bg-zinc-950 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-white'
+                      : 'bg-white dark:bg-zinc-950 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 hover:text-zinc-900 dark:hover:text-white shadow-sm'
                   }`}
                 >
                   {label}
@@ -105,7 +105,7 @@ export default function Projects() {
 
           {/* Tri */}
           <div className="flex items-center gap-3 w-full md:w-auto">
-            <label htmlFor="sort" className="text-xs font-bold uppercase tracking-wider text-zinc-500 shrink-0">
+            <label htmlFor="sort" className="text-xs font-bold uppercase tracking-wider text-zinc-550 dark:text-zinc-500 shrink-0">
               Trier par
             </label>
             <div className="relative w-full md:w-48">
@@ -113,7 +113,7 @@ export default function Projects() {
                 id="sort"
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value)}
-                className="block w-full bg-zinc-950 border border-zinc-800 text-zinc-300 py-2.5 px-4 pr-10 rounded-sm text-xs font-bold uppercase tracking-wider leading-tight focus:outline-none focus:border-yellow-500 focus:text-white transition-all appearance-none cursor-pointer"
+                className="block w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 py-2.5 px-4 pr-10 rounded-sm text-xs font-bold uppercase tracking-wider leading-tight focus:outline-none focus:border-yellow-500 focus:text-zinc-900 dark:focus:text-white transition-all appearance-none cursor-pointer shadow-sm"
                 aria-label="Trier par"
               >
                 <option value="name-asc">Nom: A-Z</option>
@@ -138,11 +138,11 @@ export default function Projects() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-zinc-900 border border-zinc-850 rounded-lg">
-            <svg className="w-12 h-12 text-zinc-650 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="text-center py-20 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-850 rounded-lg">
+            <svg className="w-12 h-12 text-zinc-400 dark:text-zinc-650 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <p className="text-zinc-400 font-bold uppercase tracking-wider text-sm">Aucun service trouvé pour cette catégorie</p>
+            <p className="text-zinc-600 dark:text-zinc-400 font-bold uppercase tracking-wider text-sm">Aucun service trouvé pour cette catégorie</p>
           </div>
         )}
       </main>
