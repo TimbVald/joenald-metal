@@ -3,12 +3,15 @@
 import { useState, useMemo } from 'react';
 import { services } from '@/data/services';
 import ServiceCard from '@/components/ServiceCard';
+import Image from 'next/image';
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [sortOption, setSortOption] = useState('name-asc'); // Default sort by name A-Z
+  const [sortOption, setSortOption] = useState('name-asc');
 
-  const categories = ['All', ...new Set(services.map((service) => service.category))];
+  const categories = useMemo(() => {
+    return ['All', ...Array.from(new Set(services.map((service) => service.category)))];
+  }, []);
 
   const filteredServices = useMemo(() => {
     return selectedCategory === 'All'
@@ -17,7 +20,7 @@ export default function Projects() {
   }, [selectedCategory]);
 
   const sortedServices = useMemo(() => {
-    let sortableServices = [...filteredServices];
+    const sortableServices = [...filteredServices];
 
     switch (sortOption) {
       case 'price-asc':
@@ -47,56 +50,101 @@ export default function Projects() {
   }, [filteredServices, sortOption]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8">
-      <main className="flex flex-col items-center justify-center text-center max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6">Our Services & Projects</h1>
-        <p className="text-lg mb-8">
-          Explore our comprehensive range of metalwork services and see how we bring your visions to life.
-          Each service is backed by our commitment to quality, innovation, and precision.
-        </p>
+    <div className="flex min-h-screen flex-col bg-zinc-950 text-zinc-100 font-sans">
+      
+      {/* En-tête immersif */}
+      <section className="relative py-24 bg-zinc-900 border-b border-zinc-800/80">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1535813547-99c456a41d4a?q=80&w=2670&auto=format&fit=crop"
+            alt="Profils en acier"
+            fill
+            className="object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
+        </div>
+        
+        <div className="relative z-10 container mx-auto px-6 text-center max-w-3xl">
+          <span className="text-yellow-500 font-extrabold text-xs uppercase tracking-widest bg-yellow-500/10 px-4 py-1 rounded-full">
+            Nos Prestations
+          </span>
+          <h1 className="text-4xl md:text-6xl font-black text-white mt-4 tracking-tight uppercase">
+            Services & Réalisations
+          </h1>
+          <div className="w-16 h-1 bg-yellow-500 mx-auto mt-6 rounded-full"></div>
+          <p className="text-zinc-400 text-base md:text-lg mt-6 leading-relaxed">
+            Parcourez notre gamme complète de services d&apos;ingénierie métallique. Chaque projet bénéficie de notre précision technique et de notre engagement qualité.
+          </p>
+        </div>
+      </section>
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-8 w-full">
-          {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full text-lg font-semibold transition-colors duration-300
-                  ${selectedCategory === category
-                    ? 'bg-yellow-600 text-white shadow-md'
-                    : 'bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600'
+      {/* Contenu principal */}
+      <main className="container mx-auto px-6 py-20 flex-grow max-w-6xl">
+        {/* Filtres et tris */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12 bg-zinc-900 border border-zinc-800 p-6 rounded-lg">
+          
+          {/* Boutons de catégories */}
+          <div className="flex flex-wrap gap-2.5 justify-center md:justify-start">
+            {categories.map((category) => {
+              const label = category === 'All' ? 'Tous' : category;
+              return (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all duration-300 border ${
+                    selectedCategory === category
+                      ? 'bg-yellow-500 text-zinc-950 border-yellow-500 shadow-md shadow-yellow-500/10'
+                      : 'bg-zinc-950 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-white'
                   }`}
-              >
-                {category}
-              </button>
-            ))}
+                >
+                  {label}
+                </button>
+              );
+            })}
           </div>
 
-          {/* Sort Options */}
-          <div className="relative">
-            <select
-              value={sortOption}
-              onChange={(e) => setSortOption(e.target.value)}
-              className="block appearance-none w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 py-2 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white dark:focus:bg-gray-700 focus:border-yellow-500"
-              aria-label="Sort by"
-            >
-              <option value="name-asc">Name: A-Z</option>
-              <option value="name-desc">Name: Z-A</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
-              <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          {/* Tri */}
+          <div className="flex items-center gap-3 w-full md:w-auto">
+            <label htmlFor="sort" className="text-xs font-bold uppercase tracking-wider text-zinc-500 shrink-0">
+              Trier par
+            </label>
+            <div className="relative w-full md:w-48">
+              <select
+                id="sort"
+                value={sortOption}
+                onChange={(e) => setSortOption(e.target.value)}
+                className="block w-full bg-zinc-950 border border-zinc-800 text-zinc-300 py-2.5 px-4 pr-10 rounded-sm text-xs font-bold uppercase tracking-wider leading-tight focus:outline-none focus:border-yellow-500 focus:text-white transition-all appearance-none cursor-pointer"
+                aria-label="Trier par"
+              >
+                <option value="name-asc">Nom: A-Z</option>
+                <option value="name-desc">Nom: Z-A</option>
+                <option value="price-asc">Prix: Croissant</option>
+                <option value="price-desc">Prix: Décroissant</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-zinc-500">
+                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-          {sortedServices.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
-        </div>
+        {/* Grille de projets/services */}
+        {sortedServices.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
+            {sortedServices.map((service) => (
+              <ServiceCard key={service.id} service={service} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-20 bg-zinc-900 border border-zinc-850 rounded-lg">
+            <svg className="w-12 h-12 text-zinc-650 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p className="text-zinc-400 font-bold uppercase tracking-wider text-sm">Aucun service trouvé pour cette catégorie</p>
+          </div>
+        )}
       </main>
     </div>
   );
